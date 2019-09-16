@@ -179,7 +179,7 @@ $(document).ready(function() {
 	
 	$("select[name=mil_yn]").change(function() {
 		var mil_yn = $("#mil_yn").val();
-		console.log(mil_yn);
+// 		console.log(mil_yn);
 		var strHtml = "";
 		if (mil_yn == "군필") {
 			strHtml += '<div class="col-md-3">'
@@ -226,11 +226,11 @@ $(document).ready(function() {
 				+ '</div>';
 				+ '<div class="col-sm-3 padding">'
 				+ '<div class="col-sm-4 text_area">입영일자</div>'
-				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_startdate" name="mil_startdate" value="해당없음">'
+				+ '<input type="text" class="col-sm-7 form-control" disabled="disabled" id="mil_startdate" name="mil_startdate" value="해당없음">'
 				+ '</div>'
 				+ '<div class="col-sm-3 padding">'
 				+ '<div class="col-sm-4 text_area">전역일자</div>'
-				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_enddate" name="mil_enddate" value="해당없음">'
+				+ '<input type="text" class="col-sm-7 form-control" disabled="disabled" id="mil_enddate" name="mil_enddate" value="해당없음">'
 				+ '</div>';	
 		}
 		$(".mil_test").html(strHtml);
