@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="insaMapper">
+
+	<insert id="memberInsert">
+		insert into insa(sabun, join_day, retire_day, put_yn, name, reg_no, eng_name, phone, hp, carrier, pos_gbn_code, cmp_reg_no, cmp_reg_image, sex, years, email, zip, addr1, addr2, dept_code, join_gbn_code, id, pwd, salary, kosa_reg_yn, kosa_class_code, mil_yn, mil_type, mil_level, mil_startdate, mil_enddate, job_type, gart_level, self_intro, crm_name, profile)
+		values(seq_insa.nextval, #{join_day}, #{retire_day}, #{put_yn}, #{name}, #{reg_no}, #{eng_name}, #{phone}, #{hp}, #{carrier}, #{pos_gbn_code}, #{cmp_reg_no}, #{cmp_reg_image}, #{sex}, #{years}, #{email}, #{zip}, #{addr1}, #{addr2}, #{dept_code}, #{join_gbn_code}, #{id}, #{pwd}, #{salary}, #{kosa_reg_yn}, #{kosa_class_code}, #{mil_yn}, #{mil_type}, #{mil_level}, #{mil_startdate}, #{mil_enddate}, #{job_type}, #{gart_level}, #{self_intro}, #{crm_name}, #{profile})
+	</insert>
+
+	<select id="getSabun" resultType="int">
+		select count(*) from insa
+	</select>
+
+	<select id="getInsaCom" resultType="insaComVo">
+		select * from insa_com
+	</select>
+
+<!-- 	<select id="getMemberList" resultType="insaVo"> -->
+<!-- 		select * from  -->
+<!-- 			(select rownum rnum, a.* from  -->
+<!-- 				(select * from insa -->
+<!-- 					<include refid="search"></include> -->
+<!-- 				order by sabun desc)  -->
+<!-- 			a) -->
+<!-- 		where rnum &gt;= #{startRow} and rnum &lt;= #{endRow} -->
+<!-- 	</select> -->
+
+	 
+ 	<select id="getMemberList" resultType="insaVo">
+		select * from insa
+			<include refid="search"></include>
+		order by sabun desc
+	</select>
+
+	<select id="getMemberCount" resultType="int">
+		select count(*) from insa
+		<include refid="search"></include>
+	</select>
+
+	<select id="updateMember" resultType="insaVo">
+		select * from insa
+		where sabun = #{sabun}
+	</select>
+
+	<update id="updateMemberAction">
+		update insa set
+			join_day = #{join_day},
+			retire_day = #{retire_day},
+			put_yn = #{put_yn},
+			name = #{name},
+			reg_no = #{reg_no},
+			eng_name = #{eng_name},
+			phone = #{phone},
+			hp = #{hp},
+			carrier = #{carrier},
+			pos_gbn_code = #{pos_gbn_code},
+			cmp_reg_no = #{cmp_reg_no},
+			cmp_reg_image = #{cmp_reg_image},
+			sex = #{sex},
+			years = #{years},
+			email = #{email},
+			zip = #{zip},
+			addr1 = #{addr1},
+			addr2 = #{addr2},
+			dept_code = #{dept_code},
+			join_gbn_code = #{join_gbn_code},
+			id = #{id},
+			pwd = #{pwd},
+			salary = #{salary},
+			kosa_reg_yn = #{kosa_reg_yn},
+			kosa_class_code = #{kosa_class_code},
+			mil_yn = #{mil_yn},
+			mil_type = #{mil_type},
+			mil_level = #{mil_level},
+			mil_startdate = #{mil_startdate},
+			mil_enddate = #{mil_enddate},
+			job_type = #{job_type},
+			gart_level = #{gart_level},
+			self_intro = #{self_intro},
+			crm_name = #{crm_name},
+			profile = #{profile}
+		where sabun = #{sabun}
+	</update>
+	
+	<select id="dupId" resultType="int">
+		select count(*) from insa
+		where id = #{id}
+	</select>
+	
+	<sql id="search">
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="sabun != null || sabun != ''">
+				and sabun like '%' || #{sabun} || '%'
+			</if>
+			<if test="name != null || name != ''">
+				and name like '%' || #{name} || '%'
+			</if>
+			<if test="join_gbn_code != null || join_gbn_code != ''">
+				and join_gbn_code like '%' || #{join_gbn_code} || '%'
+			</if>
+			<if test="put_yn != null || put_yn != ''">
+				and put_yn like '%' || #{put_yn} || '%'
+			</if>
+			<if test="pos_gbn_code != null || pos_gbn_code != ''">
+				and pos_gbn_code like '%' || #{pos_gbn_code} || '%'
+			</if>
+			<if test="join_day != null || join_day != ''">
+				and join_day like '%' || #{join_day} || '%'
+			</if>
+			<if test="retire_day != null || retire_day != ''">
+				and retire_day like '%' || #{retire_day} || '%'
+			</if>
+			<if test="job_type != null || job_type != ''">
+				and job_type like '%' || #{job_type} || '%'
+			</if>
+		</trim>
+	</sql>
+
+</mapper>

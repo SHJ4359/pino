@@ -2,7 +2,7 @@ package com.pino.domain;
 
 public class PagingDto {
 	private int nowPage = 1;
-	private int perPage = 10;;
+	private int perPage = 10;
 	private int startRowPage = 1;
 	private int endRowPage = startRowPage + perPage - 1;
 	

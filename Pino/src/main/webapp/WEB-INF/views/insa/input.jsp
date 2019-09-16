@@ -179,9 +179,9 @@ $(document).ready(function() {
 	
 	$("select[name=mil_yn]").change(function() {
 		var mil_yn = $("#mil_yn").val();
-// 		console.log(mil_yn);
+		console.log(mil_yn);
 		var strHtml = "";
-		if (mil_yn == "Y") {
+		if (mil_yn == "군필") {
 			strHtml += '<div class="col-md-3">'
 				+ '<label class="col-md-4" style="text-align: center;margin-top: 5px;">군별</label>'
 				+ '<select id="mil_type" name="mil_type" class="col-md-8 form-control">'
@@ -202,35 +202,36 @@ $(document).ready(function() {
 				+ '</c:forEach>'
 				+ '</select>'
 				+ '</div>';
-// 				+ '<div class="col-sm-3 padding">'
-// 				+ '<div class="col-sm-4 text_area">입영일자</div>'
-// 				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_startdate" name="mil_startdate">'
-// 				+ '</div>'
-// 				+ '<div class="col-sm-3 padding">'
-// 				+ '<div class="col-sm-4 text_area">전역일자</div>'
-// 				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_enddate" name="mil_enddate">'
-// 				+ '</div>';
-		} else {
+				+ '<div class="col-sm-3 padding">'
+				+ '<div class="col-sm-4 text_area">입영일자</div>'
+				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_startdate" name="mil_startdate">'
+				+ '</div>'
+				+ '<div class="col-sm-3 padding">'
+				+ '<div class="col-sm-4 text_area">전역일자</div>'
+				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_enddate" name="mil_enddate">'
+				+ '</div>';
+		} 
+		if (mil_yn == "미필") {
 			strHtml += '<div class="col-md-3">'
 				+ '<label class="col-md-4" style="text-align: center;margin-top: 5px;">군별</label>'
-				+ '<select class="col-sm-8 form-control" id="mil_type" name="mil_type" disabled>'
+				+ '<select class="col-sm-8 form-control" id="mil_type" name="mil_type" disabled="disabled">'
 				+ '<option value="N">해당없음</option>'
 				+ '</select>'
 				+ '</div>'
 				+ '<div class="col-sm-3">'
-				+ '<label class="col-md-4" style="text-align: center;margin-top: 5px;">군별</label>'
-				+ '<select class="col-sm-8 form-control" id="mil_level" name="mil_level" disabled>'
+				+ '<label class="col-md-4" style="text-align: center;margin-top: 5px;">계급</label>'
+				+ '<select class="col-sm-8 form-control" id="mil_level" name="mil_level" disabled="disabled">'
 				+ '<option value="N">해당없음</option>'
 				+ '</select>'
 				+ '</div>';
-// 				+ '<div class="col-sm-3 padding">'
-// 				+ '<div class="col-sm-4 text_area">입영일자</div>'
-// 				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_startdate" name="mil_startdate" value="해당없음">'
-// 				+ '</div>'
-// 				+ '<div class="col-sm-3 padding">'
-// 				+ '<div class="col-sm-4 text_area">전역일자</div>'
-// 				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_enddate" name="mil_enddate" value="해당없음">'
-// 				+ '</div>';	
+				+ '<div class="col-sm-3 padding">'
+				+ '<div class="col-sm-4 text_area">입영일자</div>'
+				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_startdate" name="mil_startdate" value="해당없음">'
+				+ '</div>'
+				+ '<div class="col-sm-3 padding">'
+				+ '<div class="col-sm-4 text_area">전역일자</div>'
+				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_enddate" name="mil_enddate" value="해당없음">'
+				+ '</div>';	
 		}
 		$(".mil_test").html(strHtml);
 	});
