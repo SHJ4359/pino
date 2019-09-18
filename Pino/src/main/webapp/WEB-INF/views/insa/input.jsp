@@ -202,14 +202,8 @@ $(document).ready(function() {
 				+ '</c:forEach>'
 				+ '</select>'
 				+ '</div>';
-				+ '<div class="col-sm-3 padding">'
-				+ '<div class="col-sm-4 text_area">입영일자</div>'
-				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_startdate" name="mil_startdate">'
-				+ '</div>'
-				+ '<div class="col-sm-3 padding">'
-				+ '<div class="col-sm-4 text_area">전역일자</div>'
-				+ '<input type="text" class="col-sm-7 form-control datePicker" disabled="disabled" id="mil_enddate" name="mil_enddate">'
-				+ '</div>';
+			$("#datepicker1").attr("value", "");
+			$("#datepicker2").attr("value", "");
 		} 
 		if (mil_yn == "미필") {
 			strHtml += '<div class="col-md-3">'
@@ -224,14 +218,10 @@ $(document).ready(function() {
 				+ '<option value="N">해당없음</option>'
 				+ '</select>'
 				+ '</div>';
-				+ '<div class="col-sm-3 padding">'
-				+ '<div class="col-sm-4 text_area">입영일자</div>'
-				+ '<input type="text" class="col-sm-7 form-control" disabled="disabled" id="mil_startdate" name="mil_startdate" value="해당없음">'
-				+ '</div>'
-				+ '<div class="col-sm-3 padding">'
-				+ '<div class="col-sm-4 text_area">전역일자</div>'
-				+ '<input type="text" class="col-sm-7 form-control" disabled="disabled" id="mil_enddate" name="mil_enddate" value="해당없음">'
-				+ '</div>';	
+			$("#datepicker1").attr("value", "해당없음");
+			$("#datepicker1").attr("disabled");
+			$("#datepicker2").attr("value", "해당없음");
+			$("#datepicker2").attr("disabled");
 		}
 		$(".mil_test").html(strHtml);
 	});
@@ -979,11 +969,11 @@ $(document).ready(function() {
 			
 			<div class="col-md-3">
 				<label class="col-md-4" style="text-align: center;margin-top: 5px;">입영일자</label>
-				<input type="text" id="datepicker1" name="mil_startdate" class="col-md-7 form-control" readonly="readonly">
+				<input type="text" id="datepicker1" name="mil_startdate" class="col-md-7 form-control" readonly="readonly" value="">
 			</div>
 			<div class="col-md-3">
 				<label class="col-md-4" style="text-align: center;margin-top: 5px;">전역일자</label>
-				<input type="text" id="datepicker2" name="mil_enddate"  class="col-md-7 form-control" readonly="readonly">
+				<input type="text" id="datepicker2" name="mil_enddate"  class="col-md-7 form-control" readonly="readonly" value="">
 			</div>
 		</div>
 		
